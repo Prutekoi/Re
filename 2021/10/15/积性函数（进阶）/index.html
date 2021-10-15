@@ -28,7 +28,7 @@
 <meta property="og:description" content="之前的文章 一些术语和记号： 块筛：所有 \(\lfloor n&#x2F;i\rfloor\) 处的前缀和 \(Sf(n)\)：\(\sum\limits_{i&#x3D;1}^nf(i)\) powerful number 之前介绍了powerful number ，要求积性函数 \(f(n)\) 的前缀和，只要我们有一个易于求块筛的积性函数 \(g(n)\)，使得\(g(p)&#x3D;f(p)\)，则我们可以在 \(O">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-15T00:54:21.000Z">
-<meta property="article:modified_time" content="2021-10-15T01:33:20.131Z">
+<meta property="article:modified_time" content="2021-10-15T02:40:13.456Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -174,7 +174,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-10-15 08:54:21 / Modified: 09:33:20" itemprop="dateCreated datePublished" datetime="2021-10-15T08:54:21+08:00">2021-10-15</time>
+              <time title="Created: 2021-10-15 08:54:21 / Modified: 10:40:13" itemprop="dateCreated datePublished" datetime="2021-10-15T08:54:21+08:00">2021-10-15</time>
             </span>
 
           
@@ -420,6 +420,63 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
