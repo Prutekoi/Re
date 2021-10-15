@@ -7,12 +7,12 @@
   
   <title>积性函数（进阶） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="之前的文章 一些术语和记号： 块筛：所有 $\lfloor n&#x2F;i\rfloor$ 处的前缀和 $Sf(n)$：$\sum\limits_{i&#x3D;1}^nf(i)$ powerful number之前介绍了powerful number ，要求积性函数 $f(n)$ 的前缀和，只要我们有一个易于求块筛的积性函数 $g(n)$，使得$g(p)&#x3D;f(p)$，则我们可以在 $O(\sqrt n)$ 的额外">
+  <meta name="description" content="之前的文章 一些术语和记号： 块筛：所有 \(\lfloor n&#x2F;i\rfloor\) 处的前缀和 \(Sf(n)\)：\(\sum\limits_{i&#x3D;1}^nf(i)\) powerful number 之前介绍了powerful number ，要求积性函数 \(f(n)\) 的前缀和，只要我们有一个易于求块筛的积性函数 \(g(n)\)，使得\(g(p)&#x3D;f(p)\)，则我们可以在 \(O">
 <meta property="og:type" content="article">
 <meta property="og:title" content="积性函数（进阶）">
 <meta property="og:url" content="http://example.com/2021/10/15/%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0%EF%BC%88%E8%BF%9B%E9%98%B6%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="之前的文章 一些术语和记号： 块筛：所有 $\lfloor n&#x2F;i\rfloor$ 处的前缀和 $Sf(n)$：$\sum\limits_{i&#x3D;1}^nf(i)$ powerful number之前介绍了powerful number ，要求积性函数 $f(n)$ 的前缀和，只要我们有一个易于求块筛的积性函数 $g(n)$，使得$g(p)&#x3D;f(p)$，则我们可以在 $O(\sqrt n)$ 的额外">
+<meta property="og:description" content="之前的文章 一些术语和记号： 块筛：所有 \(\lfloor n&#x2F;i\rfloor\) 处的前缀和 \(Sf(n)\)：\(\sum\limits_{i&#x3D;1}^nf(i)\) powerful number 之前介绍了powerful number ，要求积性函数 \(f(n)\) 的前缀和，只要我们有一个易于求块筛的积性函数 \(g(n)\)，使得\(g(p)&#x3D;f(p)\)，则我们可以在 \(O">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-15T00:54:21.000Z">
 <meta property="article:modified_time" content="2021-10-15T00:57:17.601Z">
@@ -90,64 +90,65 @@
       
         <p><a target="_blank" rel="noopener" href="https://prutekoi.github.io/post/qiu-he-ji-qiao-du-jiao-shai/">之前的文章</a></p>
 <p>一些术语和记号：</p>
-<p>块筛：所有 $\lfloor n/i\rfloor$ 处的前缀和</p>
-<p>$Sf(n)$：$\sum\limits_{i=1}^nf(i)$</p>
-<h4 id="powerful-number"><a href="#powerful-number" class="headerlink" title="powerful number"></a>powerful number</h4><p>之前介绍了powerful number ，要求积性函数 $f(n)$ 的前缀和，只要我们有一个易于求块筛的积性函数 $g(n)$，使得$g(p)=f(p)$，则我们可以在 $O(\sqrt n)$ 的额外时间来求 $f(n)$ 单点的前缀和。</p>
-<p>下面介绍，我们可以在 $O(n^{3/5})$ 额外时间求出 $f(n)$ 的块筛。</p>
-<p>这个问题也可以表述为：我们有两个积性函数 $h(n),g(n)$ 的块筛，$h(n)$ 只在powerful number 处有值，要在 $O(n^{3/5})$ 时间求出 $f(n)=h(n)*g(n)$ 的块筛。</p>
+<p>块筛：所有 <span class="math inline">\(\lfloor n/i\rfloor\)</span> 处的前缀和</p>
+<p><span class="math inline">\(Sf(n)\)</span>：<span class="math inline">\(\sum\limits_{i=1}^nf(i)\)</span></p>
+<h4 id="powerful-number">powerful number</h4>
+<p>之前介绍了powerful number ，要求积性函数 <span class="math inline">\(f(n)\)</span> 的前缀和，只要我们有一个易于求块筛的积性函数 <span class="math inline">\(g(n)\)</span>，使得<span class="math inline">\(g(p)=f(p)\)</span>，则我们可以在 <span class="math inline">\(O(\sqrt n)\)</span> 的额外时间来求 <span class="math inline">\(f(n)\)</span> 单点的前缀和。</p>
+<p>下面介绍，我们可以在 <span class="math inline">\(O(n^{3/5})\)</span> 额外时间求出 <span class="math inline">\(f(n)\)</span> 的块筛。</p>
+<p>这个问题也可以表述为：我们有两个积性函数 <span class="math inline">\(h(n),g(n)\)</span> 的块筛，<span class="math inline">\(h(n)\)</span> 只在powerful number 处有值，要在 <span class="math inline">\(O(n^{3/5})\)</span> 时间求出 <span class="math inline">\(f(n)=h(n)*g(n)\)</span> 的块筛。</p>
 <ul>
-<li><p>引理1：满足 $x$ 是powerful number，且 $xy\leq n$ 的 $(x,y)$ 有序对的个数是 $O(n)$ 的。</p>
-<p>证明：上述有序对个数即为 $O(\sum\limits_{i=1}^n\sqrt \frac{n}{i})=O(n)$ （积分）</p>
-</li>
-<li><p>引理2： $h(n)$ 的块筛只有 $O(n^{1/3})$ 个本质不同的值。</p>
-<p>证明：当 $i\leq n^{1/3}$ 时，$\lfloor n/i\rfloor$ 有 $O(n^{1/3})$ 个，而 $i&gt;n^{1/3}$ 时，$\lfloor n/i\rfloor\leq n^{2/3}$，在此范围的powerful number 只有 $O(n^{1/3})$ 个。显然得证。</p>
-</li>
+<li><p>引理1：满足 <span class="math inline">\(x\)</span> 是powerful number，且 <span class="math inline">\(xy\leq n\)</span> 的 <span class="math inline">\((x,y)\)</span> 有序对的个数是 <span class="math inline">\(O(n)\)</span> 的。</p>
+<p>证明：上述有序对个数即为 <span class="math inline">\(O(\sum\limits_{i=1}^n\sqrt \frac{n}{i})=O(n)\)</span> （积分）</p></li>
+<li><p>引理2： <span class="math inline">\(h(n)\)</span> 的块筛只有 <span class="math inline">\(O(n^{1/3})\)</span> 个本质不同的值。</p>
+<p>证明：当 <span class="math inline">\(i\leq n^{1/3}\)</span> 时，<span class="math inline">\(\lfloor n/i\rfloor\)</span> 有 <span class="math inline">\(O(n^{1/3})\)</span> 个，而 <span class="math inline">\(i&gt;n^{1/3}\)</span> 时，<span class="math inline">\(\lfloor n/i\rfloor\leq n^{2/3}\)</span>，在此范围的powerful number 只有 <span class="math inline">\(O(n^{1/3})\)</span> 个。显然得证。</p></li>
 </ul>
-<p>于是，我们可以设置阈值 $S$，这样，$S$ 以内的块筛便可以通过枚举所有合法的对，暴力统计贡献来 $O(S)$ 求得。对于 $S$ 以外的块筛，我们可以分别用除法分块来解决。我们只需要记录一个 next 数组，每次跳过一段相同的 $Sh(i)$，即可做到 $O(n^{1/3})$ 除法分块。于是后半部分复杂度为 $O(\sum\limits_{i=1}^\frac{n}{S}(n/i)^{1/3})=O(\frac{n}{S^{2/3}})$ </p>
-<p>取 $S=n^{3/5}$ 得总复杂度为 $O(n^{3/5})$ 。</p>
-<h4 id="新版-Min-25-筛"><a href="#新版-Min-25-筛" class="headerlink" title="新版 Min_25 筛"></a>新版 Min_25 筛</h4><ul>
-<li><p>引理3：满足 $p^k\leq n$ 的 $(p,k)$ 有序对的个数是 $O(\frac{n}{\log n})$ 的。</p>
-<p>证明：设此个数为 $T(n)$，若 $p_0\leq \sqrt n$，使 $p_0^k\leq \sqrt n$ 的 $k$ 的个数为 $m$，则使 $p_0^k\leq n$ 的 $k$ 的个数不大于 $2m+1$。故 $p\leq \sqrt n$ 时此个数为 $2T(\sqrt n)$。而 $p&gt;\sqrt n$ 时显然为 $O(\frac{n}{\log n})$。即 $T(n)=2T(\sqrt n)+O(\frac{n}{\log n})$。解得 $T(n)=O(\frac{n}{\log n})$。</p>
-</li>
-<li><p>引理4：若 $\alpha&gt;1$ 满足 $p\leq n^{1/\alpha},p^k\leq n$ 的 $(p,k)$ 有序对的个数是 $O(\frac{\alpha^2 n^{1/\alpha}}{\log n})$ 的。</p>
-<p>证明：若 $p_0\leq n^{1/\alpha}$，使 $p_0^k\leq n^{1/\alpha}$ 的 $k$ 的个数为 $m$，则使 $p_0^k\leq n$ 的 $k$ 的个数不大于 $\alpha m+\alpha-1$。于是此个数为 $ O(\alpha\cdot\frac{n^{1/\alpha}}{\log n^{1/\alpha}})=O(\frac{\alpha^2 n^{1/\alpha}}{\log n})$。</p>
-</li>
-<li><p>引理5：若 $\beta&gt;1$ 是常数，则满足 $x$ 的质因子都大于 $n^{1/\beta}$ 且 $x\leq n$ 的 $x$ 的个数为 $O(\frac{n}{\log n})$ 。</p>
-<p>证明：略，参考<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Buchstab_function">维基百科</a>。</p>
-</li>
+<p>于是，我们可以设置阈值 <span class="math inline">\(S\)</span>，这样，<span class="math inline">\(S\)</span> 以内的块筛便可以通过枚举所有合法的对，暴力统计贡献来 <span class="math inline">\(O(S)\)</span> 求得。对于 <span class="math inline">\(S\)</span> 以外的块筛，我们可以分别用除法分块来解决。我们只需要记录一个 next 数组，每次跳过一段相同的 <span class="math inline">\(Sh(i)\)</span>，即可做到 <span class="math inline">\(O(n^{1/3})\)</span> 除法分块。于是后半部分复杂度为 <span class="math inline">\(O(\sum\limits_{i=1}^\frac{n}{S}(n/i)^{1/3})=O(\frac{n}{S^{2/3}})\)</span></p>
+<p>取 <span class="math inline">\(S=n^{3/5}\)</span> 得总复杂度为 <span class="math inline">\(O(n^{3/5})\)</span> 。</p>
+<h4 id="新版-min_25-筛">新版 Min_25 筛</h4>
+<ul>
+<li><p>引理3：满足 <span class="math inline">\(p^k\leq n\)</span> 的 <span class="math inline">\((p,k)\)</span> 有序对的个数是 <span class="math inline">\(O(\frac{n}{\log n})\)</span> 的。</p>
+<p>证明：设此个数为 <span class="math inline">\(T(n)\)</span>，若 <span class="math inline">\(p_0\leq \sqrt n\)</span>，使 <span class="math inline">\(p_0^k\leq \sqrt n\)</span> 的 <span class="math inline">\(k\)</span> 的个数为 <span class="math inline">\(m\)</span>，则使 <span class="math inline">\(p_0^k\leq n\)</span> 的 <span class="math inline">\(k\)</span> 的个数不大于 <span class="math inline">\(2m+1\)</span>。故 <span class="math inline">\(p\leq \sqrt n\)</span> 时此个数为 <span class="math inline">\(2T(\sqrt n)\)</span>。而 <span class="math inline">\(p&gt;\sqrt n\)</span> 时显然为 <span class="math inline">\(O(\frac{n}{\log n})\)</span>。即 <span class="math inline">\(T(n)=2T(\sqrt n)+O(\frac{n}{\log n})\)</span>。解得 <span class="math inline">\(T(n)=O(\frac{n}{\log n})\)</span>。</p></li>
+<li><p>引理4：若 <span class="math inline">\(\alpha&gt;1\)</span> 满足 <span class="math inline">\(p\leq n^{1/\alpha},p^k\leq n\)</span> 的 <span class="math inline">\((p,k)\)</span> 有序对的个数是 <span class="math inline">\(O(\frac{\alpha^2 n^{1/\alpha}}{\log n})\)</span> 的。</p>
+<p>证明：若 <span class="math inline">\(p_0\leq n^{1/\alpha}\)</span>，使 <span class="math inline">\(p_0^k\leq n^{1/\alpha}\)</span> 的 <span class="math inline">\(k\)</span> 的个数为 <span class="math inline">\(m\)</span>，则使 <span class="math inline">\(p_0^k\leq n\)</span> 的 <span class="math inline">\(k\)</span> 的个数不大于 <span class="math inline">\(\alpha m+\alpha-1\)</span>。于是此个数为 $ O()=O()$。</p></li>
+<li><p>引理5：若 <span class="math inline">\(\beta&gt;1\)</span> 是常数，则满足 <span class="math inline">\(x\)</span> 的质因子都大于 <span class="math inline">\(n^{1/\beta}\)</span> 且 <span class="math inline">\(x\leq n\)</span> 的 <span class="math inline">\(x\)</span> 的个数为 <span class="math inline">\(O(\frac{n}{\log n})\)</span> 。</p>
+<p>证明：略，参考<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Buchstab_function">维基百科</a>。</p></li>
 </ul>
-<p>新版 Min_25 筛（后称 Min_26 筛）对 $O(\frac{n^{3/4}}{\log n})$ 的 Min_25 筛进行了优化，使复杂度达到了 $O(n^{2/3})$。我们将两个版本对比着看更可能会看出些门道。它们的总体思路比较像。</p>
+<p>新版 Min_25 筛（后称 Min_26 筛）对 <span class="math inline">\(O(\frac{n^{3/4}}{\log n})\)</span> 的 Min_25 筛进行了优化，使复杂度达到了 <span class="math inline">\(O(n^{2/3})\)</span>。我们将两个版本对比着看更可能会看出些门道。它们的总体思路比较像。</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60378354">知乎专栏</a></p>
-<p>以下只讲思路，不讲细节。Min_26 筛分为4步。第一步 $O(n^{2/3})$ 求出质数位置的前缀和，这是为了在第二步时可以在 $\lfloor\frac{n}{i}\rfloor&lt;p^2$ 时停止，取得更优的复杂度，这与 Min_25 筛一致。而不同的地方在于它更加细分了。</p>
-<p>可以看到 Min_26 筛把原 Min_25 筛中的第二步拆成了现在的二三四步，质数是分批加入的，每一步都控制复杂度在 $O(n^{2/3})$ 以下。第一批为 $(n^{1/3},n^{1/2}]$ 的质数，只有加入这一批时思路与 Min_25 筛一致。</p>
-<p>第二批为 $(n^{1/6},n^{1/3}]$ 的质数。加入第二批时，利用了引理5，将 $S=n^{2/3}$ 以内合法的数（含有 $(n^{1/6},n^{1/3}]$ 质因子的数）直接搜出来，暴力统计贡献。这样 $S$ 以内的块筛就解决了。而由于我们还要处理 $S$ 以外的块筛，所以这里需要一个树状数组。用引理4来分析复杂度即可。</p>
-<p>第三批为 $[2,n^{1/6}]$ 的质数。这部分直接暴力添加，复杂度用引理4分析即可。</p>
+<p>以下只讲思路，不讲细节。Min_26 筛分为4步。第一步 <span class="math inline">\(O(n^{2/3})\)</span> 求出质数位置的前缀和，这是为了在第二步时可以在 <span class="math inline">\(\lfloor\frac{n}{i}\rfloor&lt;p^2\)</span> 时停止，取得更优的复杂度，这与 Min_25 筛一致。而不同的地方在于它更加细分了。</p>
+<p>可以看到 Min_26 筛把原 Min_25 筛中的第二步拆成了现在的二三四步，质数是分批加入的，每一步都控制复杂度在 <span class="math inline">\(O(n^{2/3})\)</span> 以下。第一批为 <span class="math inline">\((n^{1/3},n^{1/2}]\)</span> 的质数，只有加入这一批时思路与 Min_25 筛一致。</p>
+<p>第二批为 <span class="math inline">\((n^{1/6},n^{1/3}]\)</span> 的质数。加入第二批时，利用了引理5，将 <span class="math inline">\(S=n^{2/3}\)</span> 以内合法的数（含有 <span class="math inline">\((n^{1/6},n^{1/3}]\)</span> 质因子的数）直接搜出来，暴力统计贡献。这样 <span class="math inline">\(S\)</span> 以内的块筛就解决了。而由于我们还要处理 <span class="math inline">\(S\)</span> 以外的块筛，所以这里需要一个树状数组。用引理4来分析复杂度即可。</p>
+<p>第三批为 <span class="math inline">\([2,n^{1/6}]\)</span> 的质数。这部分直接暴力添加，复杂度用引理4分析即可。</p>
 <p>而在第一步求质数位置前缀和时，用与第三步一样的trick即可。</p>
-<h4 id="zzt-筛"><a href="#zzt-筛" class="headerlink" title="zzt 筛"></a>zzt 筛</h4><p>sto zzt orz</p>
-<p>这个做法可以 $T=O(\frac{n^{2/3}}{\log n})$ 求出一类积性函数 $f(n)$ 的前缀和，它需要满足</p>
+<h4 id="zzt-筛">zzt 筛</h4>
+<p>sto zzt orz</p>
+<p>这个做法可以 <span class="math inline">\(T=O(\frac{n^{2/3}}{\log n})\)</span> 求出一类积性函数 <span class="math inline">\(f(n)\)</span> 的前缀和，它需要满足</p>
 <ul>
-<li>$f(p)$ 是关于 $p$ 的低次多项式。</li>
-<li>$f(p^k)$ 可以快速求出。</li>
+<li><span class="math inline">\(f(p)\)</span> 是关于 <span class="math inline">\(p\)</span> 的低次多项式。</li>
+<li><span class="math inline">\(f(p^k)\)</span> 可以快速求出。</li>
 </ul>
-<p>这个筛法也是将所有的质数分为三批。但是处理它们的思路就更加先进了。其实我们可以把Min_26筛的前两步合并，看作处理 $[n^{1/3},n]$ 的质数，Min_26筛与 zzt 筛的结构就更加相似了，都是把质数分为几批分批处理来降低复杂度。</p>
-<h5 id="第一批：-n-1-2-n"><a href="#第一批：-n-1-2-n" class="headerlink" title="第一批：$(n^{1/2},n]$"></a>第一批：$(n^{1/2},n]$</h5><p>这时产生贡献的只有一些 $f(p)$，而它们是关于 $p$ 的低次多项式。这时我们可以考虑曲线救国。将 $f(p)$ 拆成一些单项式，现在我们只考虑 $f(p)=x^m$ 。构造另一积性函数 $g(n)$，若 $n$ 不含大于 $\sqrt n$ 的质因子，则 $g(n)=x^m$ 否则 $g(n)=0$。此时 $g(n)$ 没有第一批质数，我们可以用后面的算法快速求出 $g(n)$ 的块筛。之后，我们令 $h(n)=(\sum\limits_{i=1}^n x^m)-Sg(n)$，$h(n)$ 即包含至少含一个大于 $\sqrt n$ 质因子的数的贡献。但这仍不是我们想要的，不过我们只需从小到大枚举大于 $\sqrt  n$ 的块筛，减去不合法的东西。枚举到 $\lfloor\frac{n}{i}\rfloor$ 时，所有 $j\geq i$ 的 $h(\lfloor\frac{n}{j}\rfloor)$ 就都是大于 $\sqrt n$ 的质数的贡献。我们枚举 $h(\lfloor\frac{n}{i}\rfloor)$ 中小于$\sqrt n$ 的所有因子的乘积 $j$，减去贡献（$x^jh(\lfloor\frac{n}{ij}\rfloor)$）即可。这部分复杂度是一个调和级数 $O(\sqrt n\log n)$。可以发现这里不要求 $f(p)$ 完全积性，但是然并卵..用别的积性函数来拟合 $f(p)$ 不会比多项式更容易求和。</p>
-<p>我们可以在求出后面两批之后简单地枚举大于 $\sqrt n$ 的块筛再枚举小于 $\sqrt n$ 的所有因子的成绩，调和级数 $O(\sqrt n\log n)$ 来把结果合并。</p>
-<h5 id="第二批：-n-1-6-n-1-2"><a href="#第二批：-n-1-6-n-1-2" class="headerlink" title="第二批：$(n^{1/6},n^{1/2}]$"></a>第二批：$(n^{1/6},n^{1/2}]$</h5><p>这里仍然利用引理5，将 $S\leq n^{2/3}$ 的含有 $(n^{1/6},n^{1/2}]$ 质因子的数全部搜出，直接处理好 $S$ 以内的块筛。</p>
-<p>下面考虑一个背包模型：有 $pcnt$ 组物品，每组物品只能选一个，每个物品有价值和重量，一个背包方案的权值为选择的物品的价值的连乘积。对每个 $w\leq W$ 求总重量为 $w$ 的所有方案权值和。</p>
-<p>我们现在这个问题与这个背包模型非常类似，每组物品即为每个 $p$ 对应的 $p^k$。只不过这里重量从和变为积，且求的是前缀和，但这个背包仍能帮助我们理解发生了什么。</p>
-<p>正确的背包：外层枚举所有物品组，中层从大到小枚举所有 $w$，内层枚举组内所有物品，更新 dp 值。</p>
-<p>考虑一个写假了的背包：外层从小到大枚举所有 $w$。内层枚举所有的物品组，用这组的第一个物品更新 $w$ 的dp值。没了。</p>
+<p>这个筛法也是将所有的质数分为三批。但是处理它们的思路就更加先进了。其实我们可以把Min_26筛的前两步合并，看作处理 <span class="math inline">\([n^{1/3},n]\)</span> 的质数，Min_26筛与 zzt 筛的结构就更加相似了，都是把质数分为几批分批处理来降低复杂度。</p>
+<h5 id="第一批n12n">第一批：<span class="math inline">\((n^{1/2},n]\)</span></h5>
+<p>这时产生贡献的只有一些 <span class="math inline">\(f(p)\)</span>，而它们是关于 <span class="math inline">\(p\)</span> 的低次多项式。这时我们可以考虑曲线救国。将 <span class="math inline">\(f(p)\)</span> 拆成一些单项式，现在我们只考虑 <span class="math inline">\(f(p)=x^m\)</span> 。构造另一积性函数 <span class="math inline">\(g(n)\)</span>，若 <span class="math inline">\(n\)</span> 不含大于 <span class="math inline">\(\sqrt n\)</span> 的质因子，则 <span class="math inline">\(g(n)=x^m\)</span> 否则 <span class="math inline">\(g(n)=0\)</span>。此时 <span class="math inline">\(g(n)\)</span> 没有第一批质数，我们可以用后面的算法快速求出 <span class="math inline">\(g(n)\)</span> 的块筛。之后，我们令 <span class="math inline">\(h(n)=(\sum\limits_{i=1}^n x^m)-Sg(n)\)</span>，<span class="math inline">\(h(n)\)</span> 即包含至少含一个大于 <span class="math inline">\(\sqrt n\)</span> 质因子的数的贡献。但这仍不是我们想要的，不过我们只需从小到大枚举大于 <span class="math inline">\(\sqrt n\)</span> 的块筛，减去不合法的东西。枚举到 <span class="math inline">\(\lfloor\frac{n}{i}\rfloor\)</span> 时，所有 <span class="math inline">\(j\geq i\)</span> 的 <span class="math inline">\(h(\lfloor\frac{n}{j}\rfloor)\)</span> 就都是大于 <span class="math inline">\(\sqrt n\)</span> 的质数的贡献。我们枚举 <span class="math inline">\(h(\lfloor\frac{n}{i}\rfloor)\)</span> 中小于<span class="math inline">\(\sqrt n\)</span> 的所有因子的乘积 <span class="math inline">\(j\)</span>，减去贡献（<span class="math inline">\(x^jh(\lfloor\frac{n}{ij}\rfloor)\)</span>）即可。这部分复杂度是一个调和级数 <span class="math inline">\(O(\sqrt n\log n)\)</span>。可以发现这里不要求 <span class="math inline">\(f(p)\)</span> 完全积性，但是然并卵..用别的积性函数来拟合 <span class="math inline">\(f(p)\)</span> 不会比多项式更容易求和。</p>
+<p>我们可以在求出后面两批之后简单地枚举大于 <span class="math inline">\(\sqrt n\)</span> 的块筛再枚举小于 <span class="math inline">\(\sqrt n\)</span> 的所有因子的成绩，调和级数 <span class="math inline">\(O(\sqrt n\log n)\)</span> 来把结果合并。</p>
+<h5 id="第二批n16n12">第二批：<span class="math inline">\((n^{1/6},n^{1/2}]\)</span></h5>
+<p>这里仍然利用引理5，将 <span class="math inline">\(S\leq n^{2/3}\)</span> 的含有 <span class="math inline">\((n^{1/6},n^{1/2}]\)</span> 质因子的数全部搜出，直接处理好 <span class="math inline">\(S\)</span> 以内的块筛。</p>
+<p>下面考虑一个背包模型：有 <span class="math inline">\(pcnt\)</span> 组物品，每组物品只能选一个，每个物品有价值和重量，一个背包方案的权值为选择的物品的价值的连乘积。对每个 <span class="math inline">\(w\leq W\)</span> 求总重量为 <span class="math inline">\(w\)</span> 的所有方案权值和。</p>
+<p>我们现在这个问题与这个背包模型非常类似，每组物品即为每个 <span class="math inline">\(p\)</span> 对应的 <span class="math inline">\(p^k\)</span>。只不过这里重量从和变为积，且求的是前缀和，但这个背包仍能帮助我们理解发生了什么。</p>
+<p>正确的背包：外层枚举所有物品组，中层从大到小枚举所有 <span class="math inline">\(w\)</span>，内层枚举组内所有物品，更新 dp 值。</p>
+<p>考虑一个写假了的背包：外层从小到大枚举所有 <span class="math inline">\(w\)</span>。内层枚举所有的物品组，用这组的第一个物品更新 <span class="math inline">\(w\)</span> 的dp值。没了。</p>
 <p>这个做法有几个问题：它只会用每组的第一个物品，且背包中的物品是有序的，即有些方案算重了。</p>
-<p>翻译为数论函数的这个问题，即它计算了 $g(n)=\frac{(\sum k)!}{\prod k!}\prod f(p)^k$ 加入第二批质数的前缀和。而 $g(p)=f(p)$，这意味着若我们能快速求 $g(n)$ 的块筛，那么可以用powerful number 在 $O(n^{3/5})$ 时间求出 $f(n)$ 的块筛。这里有个小小的问题，有各种写假了的背包都能在 $f(p)$ 处拟合，为啥偏偏用这种？因为就这种好算，能分析出正确的复杂度…</p>
-<p>这时还有一个小小的问题，$g(n)$ 这时还不是一个积性函数。考虑 $\frac{g(n)}{(\sum k)!}$ 是积性的，我们只需要让 dp 的过程把当前的 $\sum k$ 也记录下来，具体地，对每个状态开一个长度为 $6$ 的桶，把每个数的贡献分别放在它的 $\sum k$ 对应的桶里。最后让每个桶除以相应的 $(\sum k)!$ 再累加即可。这样仅会在原dp上乘常数 $6$，下面不再考虑。</p>
-<p>我们分析dp过程。从小到大枚举大于 $S$ 的所有块筛，设为 $x$。枚举质数时若仅枚举到 $p^2\leq x$，则复杂度为 $O(\frac{\sqrt x}{\log x})$。而当 $p^2&gt;x$ 时，由于$\lfloor\frac{x}{p}\rfloor&lt; \sqrt n$ ，$Sg(\lfloor\frac{x}{p}\rfloor)$ 不同值的个数就有保证（由引理5），为 $O(\frac{\sqrt x}{\log x})$。于是与上面powerful number中提到的类似，记录next数组每次跳过相同一段即可。可以类似Min_26筛第二步证出复杂度为 $O(\frac{n^{2/3}}{\log n})$。</p>
+<p>翻译为数论函数的这个问题，即它计算了 <span class="math inline">\(g(n)=\frac{(\sum k)!}{\prod k!}\prod f(p)^k\)</span> 加入第二批质数的前缀和。而 <span class="math inline">\(g(p)=f(p)\)</span>，这意味着若我们能快速求 <span class="math inline">\(g(n)\)</span> 的块筛，那么可以用powerful number 在 <span class="math inline">\(O(n^{3/5})\)</span> 时间求出 <span class="math inline">\(f(n)\)</span> 的块筛。这里有个小小的问题，有各种写假了的背包都能在 <span class="math inline">\(f(p)\)</span> 处拟合，为啥偏偏用这种？因为就这种好算，能分析出正确的复杂度...</p>
+<p>这时还有一个小小的问题，<span class="math inline">\(g(n)\)</span> 这时还不是一个积性函数。考虑 <span class="math inline">\(\frac{g(n)}{(\sum k)!}\)</span> 是积性的，我们只需要让 dp 的过程把当前的 <span class="math inline">\(\sum k\)</span> 也记录下来，具体地，对每个状态开一个长度为 <span class="math inline">\(6\)</span> 的桶，把每个数的贡献分别放在它的 <span class="math inline">\(\sum k\)</span> 对应的桶里。最后让每个桶除以相应的 <span class="math inline">\((\sum k)!\)</span> 再累加即可。这样仅会在原dp上乘常数 <span class="math inline">\(6\)</span>，下面不再考虑。</p>
+<p>我们分析dp过程。从小到大枚举大于 <span class="math inline">\(S\)</span> 的所有块筛，设为 <span class="math inline">\(x\)</span>。枚举质数时若仅枚举到 <span class="math inline">\(p^2\leq x\)</span>，则复杂度为 <span class="math inline">\(O(\frac{\sqrt x}{\log x})\)</span>。而当 <span class="math inline">\(p^2&gt;x\)</span> 时，由于<span class="math inline">\(\lfloor\frac{x}{p}\rfloor&lt; \sqrt n\)</span> ，<span class="math inline">\(Sg(\lfloor\frac{x}{p}\rfloor)\)</span> 不同值的个数就有保证（由引理5），为 <span class="math inline">\(O(\frac{\sqrt x}{\log x})\)</span>。于是与上面powerful number中提到的类似，记录next数组每次跳过相同一段即可。可以类似Min_26筛第二步证出复杂度为 <span class="math inline">\(O(\frac{n^{2/3}}{\log n})\)</span>。</p>
 <p>至此，zzt筛最精髓的部分完成了。</p>
-<h5 id="第三批：-2-p-1-6"><a href="#第三批：-2-p-1-6" class="headerlink" title="第三批：$(2,p^{1/6}]$"></a>第三批：$(2,p^{1/6}]$</h5><p>与Min_26筛第四步完全相同，复杂度 $O(\frac{n^{2/3}}{\log n})$。</p>
+<h5 id="第三批2p16">第三批：<span class="math inline">\((2,p^{1/6}]\)</span></h5>
+<p>与Min_26筛第四步完全相同，复杂度 <span class="math inline">\(O(\frac{n^{2/3}}{\log n})\)</span>。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/15/%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0%EF%BC%88%E8%BF%9B%E9%98%B6%EF%BC%89/" data-id="ckuro1xmo0001e4zjf6vp9sg6" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0%EF%BC%88%E8%BF%9B%E9%98%B6%EF%BC%89/" data-id="ckurp223500011nzjdbxvbyns" class="article-share-link">Share</a>
       
       
     </footer>
