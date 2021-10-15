@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"prutekoi.github.io","root":"/Re/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"prutekoi.github.io","root":"/Re/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta property="og:type" content="website">
@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-10-15 08:54:21 / 修改时间：11:25:15" itemprop="dateCreated datePublished" datetime="2021-10-15T08:54:21+08:00">2021-10-15</time>
+              <time title="创建时间：2021-10-15 08:54:21 / 修改时间：13:47:57" itemprop="dateCreated datePublished" datetime="2021-10-15T08:54:21+08:00">2021-10-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -262,7 +262,7 @@
 <p>这时还有一个小小的问题，<span class="math inline">\(g(n)\)</span> 这时还不是一个积性函数。考虑 <span class="math inline">\(\frac{g(n)}{(\sum k)!}\)</span> 是积性的，我们只需要让 dp 的过程把当前的 <span class="math inline">\(\sum k\)</span> 也记录下来，具体地，对每个状态开一个长度为 <span class="math inline">\(6\)</span> 的桶，把每个数的贡献分别放在它的 <span class="math inline">\(\sum k\)</span> 对应的桶里。最后让每个桶除以相应的 <span class="math inline">\((\sum k)!\)</span> 再累加即可。这样仅会在原dp上乘常数 <span class="math inline">\(6\)</span>，下面不再考虑。</p>
 <p>我们分析dp过程。从小到大枚举大于 <span class="math inline">\(S\)</span> 的所有块筛，设为 <span class="math inline">\(x\)</span>。枚举质数时若仅枚举到 <span class="math inline">\(p^2\leq x\)</span>，则复杂度为 <span class="math inline">\(O(\frac{\sqrt x}{\log x})\)</span>。而当 <span class="math inline">\(p^2&gt;x\)</span> 时，由于<span class="math inline">\(\lfloor\frac{x}{p}\rfloor&lt; \sqrt n\)</span> ，<span class="math inline">\(Sg(\lfloor\frac{x}{p}\rfloor)\)</span> 不同值的个数就有保证（由引理5），为 <span class="math inline">\(O(\frac{\sqrt x}{\log x})\)</span>。于是与上面powerful number中提到的类似，记录next数组每次跳过相同一段即可。可以类似Min_26筛第二步证出复杂度为 <span class="math inline">\(O(\frac{n^{2/3}}{\log n})\)</span>。</p>
 <p>至此，zzt筛最精髓的部分完成了。</p>
-<h5 id="第三批2p16">第三批：<span class="math inline">\((2,p^{1/6}]\)</span></h5>
+<h5 id="第三批2n16">第三批：<span class="math inline">\((2,n^{1/6}]\)</span></h5>
 <p>与Min_26筛第四步完全相同，复杂度 <span class="math inline">\(O(\frac{n^{2/3}}{\log n})\)</span>。</p>
 
       
@@ -391,7 +391,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder"></span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
@@ -417,7 +417,7 @@
 <script src="/Re/js/motion.js"></script>
 
 
-<script src="/Re/js/schemes/pisces.js"></script>
+<script src="/Re/js/schemes/muse.js"></script>
 
 
 <script src="/Re/js/next-boot.js"></script>
